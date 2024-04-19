@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <p>Library</p>
+    <div id="Books"></div>
+    <button id="newBook">NEW BOOK</button>
+    <dialog id="showForm">
+        <form id="bookForm">
+            <label for="title">Title: </label>
+            <input id="title" name="title" type="text"><br>
+
+            <label for="author">Author: </label>
+            <input id="author" name="author" type="text"><br>
+
+            <label for="pages">Pages: </label>
+            <input id="pages" name="pages" type="number"><br>
+
+            <p>Read: </p>
+            <input id="yes" name="read" type="radio" value="yes" required checked>
+            <label for="yes">Yes</label><br>
+            <input id="no" name="read" type="radio" value="no">
+            <label for="no">No</label><br>
+
+            <input type="submit" id="submitBtn">
+        </form>
+    </dialog>
+    
+
+    <script src="index.js"></script>
+</body>
+</html>
