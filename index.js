@@ -7,6 +7,7 @@ const authorinput=document.querySelector("#author");
 const pagesinput=document.querySelector("#pages");
 const radioButtons = document.querySelectorAll('input[name="read"]');
 const books=document.querySelector("#Books");
+const close=document.querySelector("svg");
 
 const myLibrary=[["stranger","albert camus","123","yes","0"]];
 displayBook();
@@ -83,6 +84,10 @@ function addToBooks(title,author,pages,read){
 
 newBook.addEventListener("click",()=>{
     dialog.showModal();
+})
+
+close.addEventListener("click",()=>{
+    dialog.close();
 })
 
 submit.addEventListener("click",(e)=>{
