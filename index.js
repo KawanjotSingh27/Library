@@ -10,35 +10,38 @@ const books=document.querySelector("#Books");
 const close=document.querySelector("svg");
 
 const myLibrary=[["stranger","albert camus","123","yes","0"]];
-displayBook();
 
-function Book(title,author,pages,read,data){
-    this.title=title;
-    this.author=author;
-    this.pages=pages;
-    this.read=read;
-    this.data=data;
-    this.toggle=function(){
+class Book{
+    constructor(title,author,pages,read,data){
+        this.title=title;
+        this.author=author;
+        this.pages=pages;
+        this.read=read;
+        this.data=data;
+    }
+    toggle(){
         if(this.read=="yes"){
-            myLibrary[data][3]="no";
+            myLibrary[this.data][3]="no";
         }
         else if(this.read=="no"){
-            myLibrary[data][3]="yes";
+            myLibrary[this.data][3]="yes";
         }
     }
-    this.remove=function(){
-        myLibrary.splice(data,1);
+    remove(){
+        myLibrary.splice(this.data,1);
         myLibrary.forEach((book)=>{
-            if(book[4]>data){
+            if(book[4]>this.data){
                 book[4]=book[4]-1;
             }
             
         })
     }
-    this.info=function(){
+    info(){
         return(`${this.title} by ${this.author}, ${this.pages} pages. Read: ${this.read}`);
     }
 }
+
+displayBook();
 
 function displayBook(){
     console.log(myLibrary);
