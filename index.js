@@ -2,7 +2,7 @@ const newBook = document.querySelector('#newBook')
 const form = document.querySelector('#bookForm')
 const dialog = document.querySelector('#showForm')
 const submit = document.querySelector('#submitBtn')
-const tileinput = document.querySelector('#title')
+const titleinput = document.querySelector('#title')
 const authorinput = document.querySelector('#author')
 const pagesinput = document.querySelector('#pages')
 const radioButtons = document.querySelectorAll('input[name="read"]')
@@ -91,17 +91,45 @@ close.addEventListener('click', () => {
     dialog.close()
 })
 
+titleinput.addEventListener('input', () => {
+    titleinput.setCustomValidity('');
+});
+
 submit.addEventListener('click', (e) => {
     e.preventDefault()
-    let title = tileinput.value
-    let author = authorinput.value
-    let pages = pagesinput.value
-    let selectedValue
-    radioButtons.forEach((radio) => {
-        if (radio.checked) {
-            selectedValue = radio.value
-        }
-    })
-    addToBooks(title, author, pages, selectedValue)
-    dialog.close()
+    if(titleinput.validity.valueMissing){
+        console.log("hello");
+        titleinput.setCustomValidity("Please enter the title");
+    }
+    else{
+        titleinput.setCustomValidity("");
+    }
+    
+    if(!titleinput.checkValidity()){
+        titleinput.reportValidity();
+    }
+    else{
+        let title = titleinput.value
+        let author = authorinput.value
+        let pages = pagesinput.value
+        let selectedValue
+        radioButtons.forEach((radio) => {
+            if (radio.checked) {
+                selectedValue = radio.value
+            }
+        })
+        addToBooks(title, author, pages, selectedValue)
+        dialog.close()
+    }
 })
+
+form.addEventListener("submit",()=>{
+    if(titleinput.validity.valueMissing){
+        titleinput.setCustomValidity("Please enter the title");
+    }
+    else{
+        titleinput.setCustomValidity("");
+    }
+})
+
+let x;
